@@ -7,10 +7,14 @@ public class Main {
         BaseballPlayer pat = new BaseballPlayer("Pat");
         SoccerPlayer beckham = new SoccerPlayer("Beckham");
 
-        Team adelaideCrows = new Team("Adelaide Crows");
+        Team<FootballPlayer> adelaideCrows = new Team("Adelaide Crows");
         adelaideCrows.addPlayer(joe);
-        adelaideCrows.addPlayer(pat);
-        adelaideCrows.addPlayer(beckham);
+
+        Team<BaseballPlayer> baseballTeam = new Team<>("Chicago Cubs");
+        baseballTeam.addPlayer(pat);
+
+        Team<SoccerPlayer> soccer = new Team<>("Man Chester");
+        soccer.addPlayer(beckham);
 
         System.out.println( adelaideCrows.numPlayers() );
     }

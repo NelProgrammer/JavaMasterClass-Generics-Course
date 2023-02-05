@@ -23,7 +23,7 @@ public class Team<T> {
             return false;
         } else {
             members.add(player);
-            System.out.println( ((Player) player).getName() + " picked for team");
+            System.out.println( ((Player) player) + " picked for team");
             return true;
         }
     }
