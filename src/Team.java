@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Team<T extends Player> { // Now if you add anything tha does not inherit from player you get an error. Can Remove Casting
+public class Team<T extends Player> implements  Comparable< Team<T> > { // Now if you add anything tha does not inherit from player you get an error. Can Remove Casting
     private String name;
     int played = 0;
     int won = 0;
@@ -54,5 +54,15 @@ public class Team<T extends Player> { // Now if you add anything tha does not in
 
     public int ranking() {
         return (won * 2) + tied;
+    }
+
+    public int compareTo(Team<T> team) {
+        if( this.ranking() > team.ranking() ) {
+            return -1;
+        } else if( this.ranking() < team.ranking() ) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
