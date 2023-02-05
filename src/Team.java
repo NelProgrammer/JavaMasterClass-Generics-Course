@@ -47,7 +47,7 @@ public class Team<T extends Player> { // Now if you add anything tha does not in
         }
         played++;
         if (opponent != null) {
-            System.out.println( this.getName() + message + opponent.getName() );
+            System.out.println("- " + this.getName() + message + opponent.getName() );
             opponent.matchResult(null, theirScore, ourScore);
         }
     }
