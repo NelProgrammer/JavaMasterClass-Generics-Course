@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Team<T> {
+public class Team<T extends Player> { // Now if you add anything tha does not inherit from player you get an error. Can Remove Casting
     private String name;
     int played = 0;
     int won = 0;
@@ -19,11 +19,11 @@ public class Team<T> {
 
     public  boolean addPlayer(T player) {
         if ( members.contains(player) ) {
-            System.out.println( ((Player) player).getName() + " is already on this team");
+            System.out.println( player.getName() + " is already on this team"  + this.getName() );
             return false;
         } else {
             members.add(player);
-            System.out.println( ((Player) player) + " picked for team");
+            System.out.println( player.getName() + " picked for team " + this.getName() );
             return true;
         }
     }
@@ -33,15 +33,21 @@ public class Team<T> {
     }
 
     public void matchResult(Team opponent, int ourScore, int theirScore) {
+        String message;
+
         if (ourScore > theirScore) {
             won++;
+            message = " beat ";
         } else if (ourScore == theirScore) {
             tied++;
+            message = " drew with ";
         } else {
             lost++;
+            message = " lost to ";
         }
         played++;
         if (opponent != null) {
+            System.out.println( this.getName() + message + opponent.getName() );
             opponent.matchResult(null, theirScore, ourScore);
         }
     }
